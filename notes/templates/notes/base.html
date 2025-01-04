@@ -27,12 +27,26 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'home' %}active{% endif %}" id="home-tab2" href="{% url 'home' %}" role="tab" aria-selected="true">Home</a>
             </li>
+            {% if user.is_authenticated %}
+
             <li class="nav-item" role="presentation">
                 <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" id="profile-tab2" href="" role="tab" aria-selected="false">Profile</a>
             </li>
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" id="contact-tab2" href="{% url 'logout' %}" role="tab" aria-selected="false">Logout</a>
+            </li>
+
+            {% else %}
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'login' %}active{% endif %}" id="contact-tab2" href="{% url 'login' %}" role="tab" aria-selected="false">Log In</a>
+            </li>
+
             <li class="nav-item" role="presentation">
                 <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'register' %}active{% endif %}" id="contact-tab2" href="{% url 'register' %}" role="tab" aria-selected="false">Register</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </header>
