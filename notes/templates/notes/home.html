@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+
+{% block content%}
+
+<br><br>
+<br>
+
+{% for note in notes %}
+<div class="card container">
+    <div class="card-header">
+      <!-- Quote -->
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <a class="mr-2" href="#">{{ note.author }}</a>
+        <small class="text-muted">{{ note.date_posted|date:"F d, Y" }}</small>
+        <hr>
+        <h5 class="card-title">{{note.title}}</h5>
+        <p>{{note.content}}</p>
+        <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+         <hr>
+        <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+      </blockquote>
+    </div>
+  </div>
+  <br>
+  {% endfor %}
+
+
+
+{% endblock content%}
