@@ -35,10 +35,24 @@
             </li>
         </ul>
     </div>
-
-
-
 </header>
+
+<div class="container">
+    {%if messages%}
+{%for message in messages %}
+<br>
+<div class="alert alert-{{message.tags}}">
+
+    {{message}}
+</div>
+
+
+</div>
+
+{%endfor%}
+{%endif%}
+
+
 
 {% block content %}
 
