@@ -12,17 +12,18 @@
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <a class="mr-2" href="#">{{ note.author }}</a>
-        <small class="text-muted">{{ note.date_posted|date:"F d, Y" }}</small>
-        <hr>
         <h5 class="card-title">{{note.title}}</h5>
-        <p>{{note.content}}</p>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ note.date_posted|date:"F d, Y" }}</h6>
+
+        <p class="card-text">{{note.content}}</p>
         <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
          <hr>
-        <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+        <a href="#" class="card-link">Edit</a>
+      <a href="#" class="card-link">Delete</a>
       </blockquote>
     </div>
+
+
   </div>
   <br>
   {% endfor %}
