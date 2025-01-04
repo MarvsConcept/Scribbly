@@ -30,7 +30,7 @@
             {% if user.is_authenticated %}
 
             <li class="nav-item" role="presentation">
-                <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" id="profile-tab2" href="" role="tab" aria-selected="false">Profile</a>
+                <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" id="profile-tab2" href="{% url 'profile' %}" role="tab" aria-selected="false">Profile</a>
             </li>
 
             <li class="nav-item" role="presentation">
