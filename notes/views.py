@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Notes
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    DetailView,
+)
 
 # Create your views here.
 
@@ -16,3 +19,9 @@ class NoteListView(ListView):
     template_name = 'notes/home.html'
     context_object_name = 'notes'
     ordering = ['-date_posted']
+
+class NoteDetailView(DetailView):
+    model = Notes
+    # template_name = 'notes/home.html'
+    # context_object_name = 'notes'
+    # ordering = ['-date_posted']
