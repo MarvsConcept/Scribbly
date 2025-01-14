@@ -6,6 +6,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -42,6 +43,16 @@ class NoteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        note = self.get_object()
+        if self.request.user == note.author:
+            return True
+        return False
+
+class NoteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Notes
+    success_url = '/'
 
     def test_func(self):
         note = self.get_object()
