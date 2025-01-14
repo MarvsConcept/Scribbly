@@ -1,0 +1,33 @@
+{% extends 'notes/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<br><br>
+<br>
+<div class="card container">
+
+  <div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">New Note</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <br>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">
+                Post
+            </button>
+        </div>
+    </form>
+</div>
+
+  </div>
+  <br>
+
+
+
+
+
+{% endblock content%}

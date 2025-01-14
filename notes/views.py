@@ -4,6 +4,7 @@ from .models import Notes
 from django.views.generic import (
     ListView,
     DetailView,
+    CreateView,
 )
 
 # Create your views here.
@@ -22,6 +23,11 @@ class NoteListView(ListView):
 
 class NoteDetailView(DetailView):
     model = Notes
-    # template_name = 'notes/home.html'
-    # context_object_name = 'notes'
-    # ordering = ['-date_posted']
+
+class NoteCreateView(CreateView):
+    model = Notes
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
