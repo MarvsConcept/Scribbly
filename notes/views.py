@@ -23,6 +23,7 @@ class NoteListView(ListView):
     template_name = 'notes/home.html'
     context_object_name = 'notes'
     ordering = ['-date_posted']
+    paginate_by = '5'
 
 class NoteDetailView(DetailView):
     model = Notes
