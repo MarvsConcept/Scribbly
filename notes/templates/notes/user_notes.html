@@ -3,7 +3,7 @@
 {% block content%}
 
 <br><br>
-
+<h1 class="mb-3">Notes by {{ view.kwargs.username }} ({{  page_obj.paginator.count }})</h1>
 {% for note in notes %}
 <div class="card container">
     <div class="card-header">
