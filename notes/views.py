@@ -5,7 +5,9 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
@@ -24,10 +26,25 @@ class NoteListView(ListView):
 class NoteDetailView(DetailView):
     model = Notes
 
-class NoteCreateView(CreateView):
+class NoteCreateView(LoginRequiredMixin, CreateView):
     model = Notes
     fields = ['title', 'content']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class NoteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Notes
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        note = self.get_object()
+        if self.request.user == note.author:
+            return True
+        return False
