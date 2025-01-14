@@ -3,7 +3,6 @@
 {% block content%}
 
 <br><br>
-<br>
 
 {% for note in notes %}
 <div class="card container">
@@ -13,14 +12,16 @@
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <img class= "rounded-circle article-img" src="{{note.author.profile.image.url}}" alt="">
-        <h5 class="card-title">{{note.title}}</h5>
+        <h5><a class="article-title" href="{%url 'note-detail' note.id %}"> {{note.title}}</a></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">{{ note.date_posted|date:"F d, Y" }}</h6>
 
         <p class="card-text">{{note.content}}</p>
         <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
          <hr>
-        <a href="#" class="card-link">Edit</a>
-      <a href="#" class="card-link">Delete</a>
+         {%if note.author == user %}
+        <a href="{%url 'note-update' note.id %}" class="card-link">Edit</a>
+        <a href="{% url 'note-delete' note.id %}" class="card-link">Delete</a>
+        {% endif %}
       </blockquote>
     </div>
 

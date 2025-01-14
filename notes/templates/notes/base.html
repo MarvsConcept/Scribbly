@@ -32,6 +32,12 @@
             </li>
             {% if user.is_authenticated %}
 
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'note-create' %}active{% endif %}" id="profile-tab2" href="{% url 'note-create' %}" role="tab" aria-selected="false">New Note</a>
+            </li>
+
+
             <li class="nav-item" role="presentation">
                 <a class="nav-link rounded-5 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" id="profile-tab2" href="{% url 'profile' %}" role="tab" aria-selected="false">Profile</a>
             </li>
